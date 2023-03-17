@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.pomo.ui.theme
+package com.example.yaroslavhorach.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

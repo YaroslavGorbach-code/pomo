@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.pomo.ui.theme
+package com.example.yaroslavhorach.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

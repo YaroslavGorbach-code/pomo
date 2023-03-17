@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.pomo.ui.theme
+package com.example.yaroslavhorach.designsystem.theme
 
 import android.app.Activity
 import android.os.Build
