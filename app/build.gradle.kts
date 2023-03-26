@@ -33,8 +33,11 @@ android {
 dependencies {
     implementation(project(Modules.coreDesignSystem))
     implementation(project(Modules.featureHome))
+
     implementation(Libs.coreKtx)
     implementation(Libs.activityCompose)
-    implementation(Libs.lifecycle)
-    implementation(Libs.viewModel)
+    implementation(Libs.appCompat)
+    implementation(Libs.hiltHavigationCompose)
+    implementation(Libs.systemUiController)
+    implementation(Libs.splechScreen)
 }

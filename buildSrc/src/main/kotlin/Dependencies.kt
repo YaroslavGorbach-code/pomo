@@ -21,6 +21,7 @@ object Plugins {
     const val kotlinAndroid = "org.jetbrains.kotlin.android"
     const val kotlinJvm = "org.jetbrains.kotlin.jvm"
     const val kapt = "kotlin-kapt"
+    const val hilt = "com.google.dagger.hilt.android"
 }
 
 object Modules {
@@ -43,6 +44,10 @@ object Versions {
     const val corutines = "1.6.4"
     const val room = "2.5.0"
     const val datastorePrefs = "1.0.0"
+    const val hiltNavigationCompose = "1.0.0"
+    const val hilt = "2.44"
+    const val systemUiController = "0.29.2-rc"
+    const val splashScreen = "1.0.0"
 }
 
 object Libs {
@@ -62,4 +67,9 @@ object Libs {
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val datastorePreferences = "androidx.datastore:datastore-preferences:${Versions.datastorePrefs}"
+    const val hiltHavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiController}"
+    const val splechScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
 }

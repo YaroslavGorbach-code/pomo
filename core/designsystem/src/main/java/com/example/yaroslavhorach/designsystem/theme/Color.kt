@@ -2,10 +2,14 @@ package com.example.yaroslavhorach.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+internal val Cultured = Color(0xFFF5F5F5)
+internal val BrightGray = Color(0xFFEDEDED)
+internal val White = Color(0xFFFFFFFF)
+internal val Crayola = Color(0xFFFF4E53)
+internal val Crayola15 = Color(0x26FF4E53)
+internal val FuzzyWuzzy = Color(0xFFDA6266)
+internal val VampireBlack = Color(0xFF090909)
+internal val DavysGrey = Color(0xFF5C5C5C)
+internal val Black10 = Color(0x1A000000)
+internal val AmericanSilver = Color(0xFFCFCFCF)
+internal val FuzzyWuzzy10 = Color(0x1ADA6266)
