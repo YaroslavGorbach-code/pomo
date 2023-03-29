@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.designsystem.theme.buttons
+package com.example.yaroslavhorach.designsystem.theme.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape

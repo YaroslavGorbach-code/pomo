@@ -14,7 +14,9 @@ val LightDefaultColorScheme = lightColorScheme(
     onBackground = BrightGray,
     surface = White,
     secondary = Crayola,
-    primary = Crayola
+    primary = Crayola,
+    primaryContainer = Calamansi,
+    onPrimaryContainer = Crayola
 )
 
 @Composable

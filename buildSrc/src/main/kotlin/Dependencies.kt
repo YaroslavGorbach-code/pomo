@@ -48,6 +48,7 @@ object Versions {
     const val hilt = "2.44"
     const val systemUiController = "0.29.2-rc"
     const val splashScreen = "1.0.0"
+    const val navigationCompose = "2.6.0-alpha08"
 }
 
 object Libs {
@@ -72,4 +73,5 @@ object Libs {
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiController}"
     const val splechScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
+    const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
 }

@@ -12,12 +12,14 @@ android {
 }
 
 dependencies {
-    implementation(Libs.coreKtx)
-    implementation(Libs.appCompat)
+    api(Libs.coreKtx)
+    api(Libs.appCompat)
     api(Libs.composeFoundation)
     api(Libs.composeLayout)
     api(Libs.composeRuntime)
     api(Libs.composeUtil)
     api(Libs.composeMaterial3)
     api(Libs.composePreview)
+    api(Libs.navigationCompose)
+    api(Libs.hiltHavigationCompose)
 }
