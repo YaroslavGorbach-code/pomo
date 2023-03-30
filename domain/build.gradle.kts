@@ -1,4 +1,3 @@
-
 plugins {
     id(Plugins.javaLibrary)
     id(Plugins.kotlinJvm)
@@ -7,4 +6,7 @@ plugins {
 java {
     sourceCompatibility = AppConfig.javaCompatibilityVersion
     targetCompatibility = AppConfig.javaCompatibilityVersion
+}
+dependencies {
+    implementation(Libs.corutines)
 }

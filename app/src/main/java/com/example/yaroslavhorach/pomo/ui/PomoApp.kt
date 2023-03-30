@@ -1,5 +1,6 @@
 package com.example.yaroslavhorach.pomo.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -67,7 +68,7 @@ private fun PomoBottomBar(
         destinations.forEach { destination ->
             val selected = currentDestination.isTopLevelDestinationInHierarchy(destination)
 
-            if (destination is TopLevelDestination.Calendar){
+            if (destination is TopLevelDestination.Calendar) {
                 PomoNavigationBarItem(
                     selected = selected,
                     onClick = { onNavigateToDestination(destination) },
@@ -118,7 +119,8 @@ private fun PomoBottomBar(
     }
 }
 
-private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLevelDestination) =
-    this?.hierarchy?.any {
-        it.route?.contains(destination::class.java.name, true) ?: false
+private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLevelDestination): Boolean {
+    return this?.hierarchy?.any {
+        it.route?.contains(destination.navigationRoute.toString(), true) ?: false
     } ?: false
+}

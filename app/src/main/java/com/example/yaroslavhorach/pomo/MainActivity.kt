@@ -10,7 +10,9 @@ import androidx.core.view.WindowCompat
 import com.example.yaroslavhorach.designsystem.theme.PomoTheme
 import com.example.yaroslavhorach.pomo.ui.PomoApp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
        installSplashScreen()

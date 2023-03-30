@@ -4,7 +4,7 @@ plugins {
 }
 
 apply {
-    from("$rootDir/common-android-library.gradle")
+    from("$rootDir/common-android-library-compose.gradle")
 }
 
 android {
@@ -12,6 +12,9 @@ android {
 }
 
 dependencies {
+    api(project(Modules.domain))
+    api(project(Modules.coreCommon))
+
     api(Libs.coreKtx)
     api(Libs.appCompat)
     api(Libs.composeFoundation)
@@ -22,4 +25,6 @@ dependencies {
     api(Libs.composePreview)
     api(Libs.navigationCompose)
     api(Libs.hiltHavigationCompose)
+    api(Libs.lifecycleCompose)
+    api(Libs.lifecycle)
 }

@@ -1,10 +1,12 @@
 plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.androidApplication)
+    kotlin(Plugins.kapt)
+    id(Plugins.hilt)
 }
 
 apply {
-    from("$rootDir/common-android-library.gradle")
+    from("$rootDir/common-android-library-compose.gradle")
 }
 
 android {
@@ -33,8 +35,13 @@ android {
 dependencies {
     implementation(project(Modules.coreDesignSystem))
     implementation(project(Modules.featureHome))
+    implementation(project(Modules.data))
 
     implementation(Libs.activityCompose)
     implementation(Libs.systemUiController)
     implementation(Libs.splechScreen)
+
+    implementation(Libs.hilt)
+    implementation(Libs.hiltHavigationCompose)
+    kapt(Libs.hiltCompiler)
 }

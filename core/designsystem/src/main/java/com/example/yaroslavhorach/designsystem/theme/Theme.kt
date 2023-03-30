@@ -51,7 +51,7 @@ val DarkDefaultColorScheme = darkColorScheme(
 
 @Composable
 fun PomoTheme(
-    darkTheme: Boolean,
+    darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
