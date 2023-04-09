@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
     override val pendingActions: MutableSharedFlow<HomeAction> = MutableSharedFlow()
 
     override val state: StateFlow<HomeViewState> = combine(getTodayTasksUseCase(), uiMessageManager.message) { tasks, messages->
-        HomeViewState(tasks, messages)
+        HomeViewState(tasks = tasks, uiMessage = messages)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),

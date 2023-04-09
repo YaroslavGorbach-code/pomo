@@ -14,3 +14,28 @@ internal val Black10 = Color(0x1A000000)
 internal val AmericanSilver = Color(0xFFCFCFCF)
 internal val FuzzyWuzzy10 = Color(0x1ADA6266)
 internal val Calamansi = Color(0xFFFFF4F5)
+
+val TaskBackgrounds = listOf(
+    Color(0xFFFF4848),
+    Color(0xFFFF0ED8),
+    Color(0xFFA70000),
+    Color(0xFFFF7325),
+    Color(0xFFA7FFC5),
+    Color(0xFF907900),
+    Color(0xFFFBFF48),
+    Color(0xFFFF0000),
+    Color(0xFFFFB259),
+    Color(0xFFFF8A00),
+    Color(0xFFB4D339),
+    Color(0xFF48FFB2),
+    Color(0xFFFFD600),
+    Color(0xFF003585),
+    Color(0xFF48FFFF),
+    Color(0xFF0066FF),
+    Color(0xFF860048),
+    Color(0xFF489CFF),
+    Color(0xFFFF008A),
+    Color(0xFF400092),
+    Color(0xFFD45AFF),
+    Color(0xFF7000FF),
+)

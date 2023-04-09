@@ -3,7 +3,7 @@ package com.example.yaroslavhorach.pomo.navigation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.example.yaroslavhorach.designsystem.theme.icon.PomoIcons
+import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
 import com.example.yaroslavhorach.designsystem.theme.secondaryIcon
 import com.example.yaroslavhorach.home.navigation.homeNavigationRoute
 import com.example.yaroslavhorach.pomo.R

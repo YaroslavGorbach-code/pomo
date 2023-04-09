@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">pomo</string>
+    <string name="app_name">Pomo</string>
     <string name="nav_bar_home_title">Home</string>
     <string name="nav_bar_calendar_title">Calendar</string>
     <string name="nav_bar_statistics_title">Statistics</string>

@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import com.example.yaroslavhorach.designsystem.R
 
-object AppTypography {
+object PomoTypography {
     val popinsBold = FontFamily(fonts = listOf(Font(resId = R.font.poppins_bold)))
     val popinsSemiBold = FontFamily(fonts = listOf(Font(resId = R.font.poppins_semi_bold)))
     val popinsMedium = FontFamily(fonts = listOf(Font(resId = R.font.poppins_medium)))

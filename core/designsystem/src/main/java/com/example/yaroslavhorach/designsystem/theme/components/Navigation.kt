@@ -23,7 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.yaroslavhorach.designsystem.R
+import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
 import com.example.yaroslavhorach.designsystem.theme.secondaryIcon
 
 @Composable
@@ -63,7 +63,7 @@ fun RowScope.AddTaskPomoNavigationBarItem(onClick: () -> Unit) {
         icon = {
             Icon(
                 modifier = Modifier.size(45.dp),
-                painter = painterResource(id = R.drawable.ic_add_task),
+                painter = painterResource(id = PomoIcons.AddTask),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary
             )

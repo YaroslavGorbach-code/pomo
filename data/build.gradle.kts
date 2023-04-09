@@ -13,6 +13,7 @@ android{
 }
 
 dependencies {
+    api(project(Modules.coreDesignSystem))
     implementation(project(Modules.dataDatabase))
     implementation(project(Modules.dataDatastore))
     implementation(Libs.corutines)

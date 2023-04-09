@@ -13,7 +13,7 @@ android{
 }
 
 dependencies {
-    api(project(Modules.domain))
+    implementation(project(Modules.domain))
     implementation(Libs.corutines)
     implementation(Libs.roomRuntime)
     implementation(Libs.roomKtx)

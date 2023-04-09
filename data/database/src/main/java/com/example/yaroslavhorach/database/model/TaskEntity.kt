@@ -2,7 +2,7 @@ package com.example.yaroslavhorach.database.model
 
 import androidx.room.PrimaryKey
 import com.example.yaroslavhorach.domain.models.Task
-import java.util.Date
+import java.util.*
 
 data class TaskEntity(
     @PrimaryKey
@@ -10,7 +10,9 @@ data class TaskEntity(
     val name: String,
     val duration: Long,
     val isFinish: Boolean,
-    val date: Date
+    val date: Long,
+    val color: Long,
+    val iconId: Int
 )
 
 fun TaskEntity.asDomainModel() = Task(
@@ -18,5 +20,7 @@ fun TaskEntity.asDomainModel() = Task(
     name = name,
     duration = duration,
     isFinish = isFinish,
-    date = date
+    date = Date(date),
+    color = color,
+    iconId = iconId
 )

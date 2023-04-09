@@ -7,6 +7,7 @@ java {
     sourceCompatibility = AppConfig.javaCompatibilityVersion
     targetCompatibility = AppConfig.javaCompatibilityVersion
 }
+
 dependencies {
     implementation(Libs.corutines)
 }

@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.yaroslavhorach.designsystem.theme.*
-import com.example.yaroslavhorach.designsystem.theme.AppTypography.popinsMedium
+import com.example.yaroslavhorach.designsystem.theme.PomoTypography.popinsMedium
 
 @Composable
 fun PrimaryButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
