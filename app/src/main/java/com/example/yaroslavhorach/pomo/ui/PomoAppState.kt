@@ -10,6 +10,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
+import com.example.yaroslavhorach.createTask.navigation.navigateToCreateTask
+import com.example.yaroslavhorach.home.navigation.navigateToHome
 import com.example.yaroslavhorach.pomo.navigation.TopLevelDestination
 import kotlinx.coroutines.CoroutineScope
 
@@ -37,6 +39,10 @@ class NiaAppState(
             else -> null
         }
 
+    val isBottomBarAndTopBarVisible: Boolean
+        @Composable get() = topLevelDestinations.map { it.navigationRoute }
+            .contains(currentDestination?.route.toString())
+
     val topLevelDestinations: List<TopLevelDestination> = listOf(
         TopLevelDestination.Home,
         TopLevelDestination.Calendar,
@@ -52,6 +58,8 @@ class NiaAppState(
      * @param topLevelDestination: The destination the app needs to navigate to.
      */
     fun navigateToTopLevelDestination(topLevelDestination: TopLevelDestination) {
+        if (navController.currentDestination?.route == topLevelDestination.navigationRoute) return
+
         val topLevelNavOptions = navOptions {
             // Pop up to the start destination of the graph to
             // avoid building up a large stack of destinations
@@ -65,9 +73,13 @@ class NiaAppState(
 
         when (topLevelDestination) {
             TopLevelDestination.Calendar -> {}
-            TopLevelDestination.Home -> {}
+            TopLevelDestination.Home -> navController.navigateToHome()
             TopLevelDestination.Profile -> {}
             TopLevelDestination.Statistics -> {}
         }
+    }
+
+    fun navigateToAddTask() {
+        navController.navigateToCreateTask()
     }
 }

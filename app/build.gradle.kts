@@ -33,9 +33,10 @@ android {
 }
 
 dependencies {
+    implementation(project(Modules.data))
     implementation(project(Modules.coreDesignSystem))
     implementation(project(Modules.featureHome))
-    implementation(project(Modules.data))
+    implementation(project(Modules.featureCreateTask))
 
     implementation(Libs.activityCompose)
     implementation(Libs.systemUiController)

@@ -36,14 +36,20 @@ fun PomoApp(
             containerColor = Color.Transparent,
             contentWindowInsets = WindowInsets(0, 0, 0, 0),
             snackbarHost = { SnackbarHost(snackbarHostState) },
-            topBar = { PomoTopBar() },
+            topBar = {
+                if (appState.isBottomBarAndTopBarVisible) {
+                    PomoTopBar()
+                }
+            },
             bottomBar = {
-                PomoBottomBar(
-                    destinations = appState.topLevelDestinations,
-                    onNavigateToDestination = appState::navigateToTopLevelDestination,
-                    currentDestination = appState.currentDestination,
-                    onNavigateToCreateTask = {}
-                )
+                if (appState.isBottomBarAndTopBarVisible) {
+                    PomoBottomBar(
+                        destinations = appState.topLevelDestinations,
+                        onNavigateToDestination = appState::navigateToTopLevelDestination,
+                        currentDestination = appState.currentDestination,
+                        onNavigateToCreateTask = { appState.navigateToAddTask() }
+                    )
+                }
             },
         ) { padding ->
             Box(

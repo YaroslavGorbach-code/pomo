@@ -34,6 +34,7 @@ object Modules {
     const val dataDatastore = ":data:datastore"
     const val domain = ":domain"
     const val featureHome = ":feature:home"
+    const val featureCreateTask = ":feature:createTask"
 }
 
 object Versions {

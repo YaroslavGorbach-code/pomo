@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.database.model
+package com.example.yaroslavhorach.database.task.model
 
 import androidx.room.PrimaryKey
 import com.example.yaroslavhorach.domain.models.Task
