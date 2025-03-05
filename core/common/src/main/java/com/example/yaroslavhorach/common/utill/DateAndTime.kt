@@ -1,9 +1,13 @@
 package com.example.yaroslavhorach.common.utill
 
 import android.content.Context
+import android.util.Log
 import com.example.yaroslavhorach.common.R
+import java.text.SimpleDateFormat
+import java.util.*
 
-fun Long.toToHoursMinutes(context: Context): String {
+fun Long.timeToToHoursMinutes(context: Context): String {
+    Log.v("dsadas", this.toString())
     val minutes = (this / (1000 * 60) % 60)
     val hours = (this / (1000 * 60 * 60) % 24)
 
@@ -36,4 +40,10 @@ fun Long.toToHoursMinutes(context: Context): String {
     }
 
     return ""
+}
+
+fun Long.toReadableDate(): String{
+    val date = Date(this)
+    val format = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+    return format.format(date)
 }

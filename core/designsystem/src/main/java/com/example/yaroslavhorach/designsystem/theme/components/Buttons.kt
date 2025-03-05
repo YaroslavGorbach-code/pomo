@@ -2,10 +2,7 @@ package com.example.yaroslavhorach.designsystem.theme.components
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -45,6 +42,22 @@ fun PrimaryVariantButton(modifier: Modifier = Modifier, text: String, onClick: (
             disabledContainerColor = MaterialTheme.colorScheme.primaryVariantInactive()
         ),
         shape = RoundedCornerShape(24)
+    ) {
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            fontFamily = popinsMedium,
+            color = MaterialTheme.colorScheme.controlSecondaryTypo()
+        )
+    }
+}
+
+@Composable
+fun PrimaryTextButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
+    TextButton(
+        onClick = onClick,
+        modifier = modifier
+            .height(52.dp),
     ) {
         Text(
             text = text,

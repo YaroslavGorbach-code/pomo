@@ -1,0 +1,24 @@
+<resources>
+    <string name="create_task_toolbar_title_text">Create New Task</string>
+    <string name="create_task_text_field_title_title_text">Title</string>
+    <string name="create_regular_task_dialog_period_field_title_text">Period</string>
+    <string name="create_regular_task_dialog_period_field_hind_text">Task Period (Optional)</string>
+    <string name="create_task_text_field_hint_title_text">Task Title</string>
+    <string name="create_task_data_picker_title_text">Date</string>
+    <string name="create_task_data_picker_hint_text">Task Date</string>
+    <string name="create_task_time_picker_title_text">Start Time</string>
+    <string name="create_task_time_picker_hint_text">Start Time</string>
+    <string name="create_task_color_picker_title_text">Color</string>
+    <string name="create_task_icon_picker_title_text">Icon</string>
+    <string name="create_task_snackbar_task_duration_title_text">Task Duration</string>
+    <string name="create_task_snackbar_working_sessions_title_text">Working Sessions</string>
+    <string name="create_task_snackbar_break_time_title_text">Break Time</string>
+    <string name="create_task_create_task_btn_text">Create Task</string>
+    <string name="create_task_create_regular_task_btn_text">Create Regular Task</string>
+    <string name="create_task_icon_picker_no_icon_text">NO</string>
+    <string name="create_task_color_picker_dialog_title_text">Pick Color</string>
+    <string name="create_task_icon_picker_dialog_title_text">Pick Icon</string>
+    <string name="create_regular_task_dialog_title_text">Create Regular Task</string>
+    <string name="create_task_time_picker_dialog_ok_btn_text">OK</string>
+    <string name="create_task_date_picker_dialog_ok_btn_text">OK</string>
+</resources>

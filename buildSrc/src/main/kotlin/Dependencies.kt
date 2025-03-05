@@ -3,15 +3,15 @@ import org.gradle.api.JavaVersion
 object AppConfig {
     const val compileSdkVersion = 33
     const val targetSdkVersion = 33
-    const val minSdkVersion = 24
+    const val minSdkVersion = 26
     const val applicationId = "com.example.yaroslavhorach.pomo"
     const val versionCode = 1
     const val versionName = "0.1"
-    const val jvmTarget = "11"
-    const val kotlinCompiler = "1.4.3"
+    const val jvmTarget = "17"
+    const val kotlinCompiler = "1.4.6"
 
-    val javaCompatibilityVersion = JavaVersion.VERSION_11
-    val kotlinCompatibilityVersion = JavaVersion.VERSION_11
+    val javaCompatibilityVersion = JavaVersion.VERSION_17
+    val kotlinCompatibilityVersion = JavaVersion.VERSION_17
 }
 
 object Plugins {
@@ -41,11 +41,9 @@ object Versions {
     const val coreKtx = "1.9.0"
     const val appCompat = "1.6.1"
     const val lifecycle = "2.6.0"
-    const val composeFoundation = "1.3.1"
-    const val compose = "1.3.3"
-    const val composeRuntime = "1.4.0"
+    const val compose = "1.4.2"
     const val lifecicleCompose = "2.6.1"
-    const val material3 = "1.0.1"
+    const val material3 = "1.2.0-alpha02"
     const val corutines = "1.6.4"
     const val room = "2.5.0"
     const val datastorePrefs = "1.0.0"
@@ -54,6 +52,7 @@ object Versions {
     const val systemUiController = "0.29.2-rc"
     const val splashScreen = "1.0.0"
     const val navigationCompose = "2.6.0-alpha08"
+    const val composeDialogs = "1.2.0"
 }
 
 object Libs {
@@ -63,12 +62,13 @@ object Libs {
     const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val lifecycleCompose = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.lifecicleCompose}"
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.composeFoundation}"
-    const val composeLayout = "androidx.compose.foundation:foundation-layout:${Versions.composeFoundation}"
-    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.composeRuntime}"
+    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+    const val composeLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeUtil = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
     const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
+    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
     const val corutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.corutines}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
@@ -80,4 +80,8 @@ object Libs {
     const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiController}"
     const val splechScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+    const val composeDialogsCore = "com.maxkeppeler.sheets-compose-dialogs:core:${Versions.composeDialogs}"
+    const val composeDialogsCalendar = "com.maxkeppeler.sheets-compose-dialogs:calendar:${Versions.composeDialogs}"
+    const val composeDialogsClock = "com.maxkeppeler.sheets-compose-dialogs:${Versions.composeDialogs}"
+    const val composeDialogsEmoji = "com.maxkeppeler.sheets-compose-dialogs:emoji:${Versions.composeDialogs}"
 }

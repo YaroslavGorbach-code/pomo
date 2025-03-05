@@ -3,7 +3,7 @@ package com.example.yaroslavhorach.home.model
 import com.example.yaroslavhorach.common.utill.UiMessage
 import com.example.yaroslavhorach.designsystem.theme.TaskBackgrounds
 import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
-import com.example.yaroslavhorach.domain.models.Task
+import com.example.yaroslavhorach.domain.task.models.Task
 import com.example.yaroslavhorach.home.R
 import java.util.*
 
@@ -46,7 +46,7 @@ data class HomeViewState(
                     false,
                     Date(),
                     TaskBackgrounds.first().value.toLong(),
-                    PomoIcons.taskCategories.first()
+                    PomoIcons.TaskCategoriesIcons.first()
                 )
             )
         )

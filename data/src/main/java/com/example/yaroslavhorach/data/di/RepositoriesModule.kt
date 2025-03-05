@@ -1,7 +1,7 @@
 package com.example.yaroslavhorach.data.di
 
-import com.example.yaroslavhorach.data.tasks.repository.TasksRepository
-import com.example.yaroslavhorach.data.tasks.repository.TasksRepositoryImpl
+import com.example.yaroslavhorach.data.task.repository.TaskRepository
+import com.example.yaroslavhorach.data.task.repository.TaskRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,5 +12,5 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoriesModule {
 
     @Binds
-    fun bindsTasksRepository(tasksRepository: TasksRepositoryImpl): TasksRepository
+    fun bindsTasksRepository(tasksRepository: TaskRepositoryImpl): TaskRepository
 }

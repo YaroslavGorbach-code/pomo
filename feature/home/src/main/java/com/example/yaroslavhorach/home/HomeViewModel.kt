@@ -2,7 +2,7 @@ package com.example.yaroslavhorach.home
 
 import androidx.lifecycle.viewModelScope
 import com.example.yaroslavhorach.common.base.BaseViewModel
-import com.example.yaroslavhorach.domain.usecases.GetTodayTasksUseCase
+import com.example.yaroslavhorach.domain.task.usecases.GetTodayTasksUseCase
 import com.example.yaroslavhorach.home.model.HomeAction
 import com.example.yaroslavhorach.home.model.HomeUiMessage
 import com.example.yaroslavhorach.home.model.HomeViewState

@@ -17,5 +17,7 @@ dependencies {
     implementation(project(Modules.coreDesignSystem))
     implementation(Libs.hilt)
     implementation(Libs.hiltHavigationCompose)
+    implementation(Libs.composeDialogsCalendar)
+    implementation(Libs.composeDialogsCore)
     kapt(Libs.hiltCompiler)
 }

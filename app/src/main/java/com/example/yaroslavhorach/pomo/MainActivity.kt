@@ -19,16 +19,12 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
 
-        // Turn off the decor fitting system windows, which allows us to handle insets,
-        // including IME animations
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             val systemUiController = rememberSystemUiController()
-
             val darkTheme = isSystemInDarkTheme()
 
-            // Update the dark content of the system bars to match the theme
             DisposableEffect(systemUiController, darkTheme) {
                 systemUiController.systemBarsDarkContentEnabled = !darkTheme
                 onDispose {}

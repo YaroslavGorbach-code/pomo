@@ -22,6 +22,7 @@ dependencies {
     api(Libs.composeRuntime)
     api(Libs.composeUtil)
     api(Libs.composeMaterial3)
+    api(Libs.composeMaterial)
     api(Libs.composePreview)
     api(Libs.navigationCompose)
     api(Libs.hiltHavigationCompose)

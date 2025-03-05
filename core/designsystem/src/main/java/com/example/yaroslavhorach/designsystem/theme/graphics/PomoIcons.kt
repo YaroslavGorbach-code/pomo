@@ -8,6 +8,7 @@ object PomoIcons {
     val Chart = R.drawable.ic_chart
     val Home = R.drawable.ic_home
     val User = R.drawable.ic_user
+    val ClockFive = R.drawable.ic_clock_five
     val AppleWho = R.drawable.ic_apple_whole
     val BabyCarriage = R.drawable.ic_baby_carriage
     val Balloons = R.drawable.ic_balloons
@@ -64,8 +65,9 @@ object PomoIcons {
     val Watter = R.drawable.ic_water
     val PlayTask = R.drawable.ic_play
     val NoTask = R.drawable.ic_no_tasks
+    val ArrowLeft = R.drawable.ic_arrow_left
 
-    val taskCategories: List<Int> = listOf(
+    val TaskCategoriesIcons: List<Int> = listOf(
         AppleWho,
         BabyCarriage,
         Balloons,

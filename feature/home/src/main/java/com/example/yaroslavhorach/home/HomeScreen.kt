@@ -24,14 +24,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.yaroslavhorach.common.utill.toToHoursMinutes
+import com.example.yaroslavhorach.common.utill.timeToToHoursMinutes
 import com.example.yaroslavhorach.designsystem.theme.PomoTheme
 import com.example.yaroslavhorach.designsystem.theme.PomoTypography
 import com.example.yaroslavhorach.designsystem.theme.components.CircularProgressBar
 import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
 import com.example.yaroslavhorach.designsystem.theme.typoPrimary
 import com.example.yaroslavhorach.designsystem.theme.typoSecondary
-import com.example.yaroslavhorach.domain.models.Task
+import com.example.yaroslavhorach.domain.task.models.Task
 import com.example.yaroslavhorach.home.model.HomeAction
 import com.example.yaroslavhorach.home.model.HomeViewState
 
@@ -155,7 +155,7 @@ private fun Task(task: Task, onClick: () -> Unit) {
                 color = MaterialTheme.colorScheme.typoPrimary()
             )
             Text(
-                text = task.duration.toToHoursMinutes(LocalContext.current),
+                text = task.duration.timeToToHoursMinutes(LocalContext.current),
                 style = PomoTypography.body4,
                 color = MaterialTheme.colorScheme.typoSecondary()
             )
@@ -178,7 +178,6 @@ private fun TodayTasksTitle(screenState: HomeViewState, onSeeAllClicked: () -> U
             .padding(top = 22.dp, start = 20.dp, end = 20.dp)
             .fillMaxWidth()
     ) {
-
         Text(
             modifier = Modifier.weight(1f),
             text = stringResource(
@@ -188,7 +187,6 @@ private fun TodayTasksTitle(screenState: HomeViewState, onSeeAllClicked: () -> U
             style = PomoTypography.h5,
             color = MaterialTheme.colorScheme.typoPrimary()
         )
-
         Text(
             modifier = Modifier.clickable { onSeeAllClicked() },
             text = stringResource(id = R.string.home_today_tasks_see_all_text),
