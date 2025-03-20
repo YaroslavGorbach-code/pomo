@@ -7,7 +7,7 @@ apply {
     from("$rootDir/common-android-library.gradle")
 }
 
-android{
+android {
     namespace = "com.example.yaroslavhorach.common"
 }
 
@@ -15,4 +15,7 @@ dependencies {
     implementation(Libs.coreKtx)
     implementation(Libs.appCompat)
     implementation(Libs.viewModel)
+    implementation(Libs.composeRuntime)
+    implementation(Libs.composeUtil)
+    implementation(Libs.composeFoundation)
 }

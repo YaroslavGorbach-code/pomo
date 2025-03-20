@@ -9,4 +9,7 @@
         <item quantity="one">%1$s minute</item>
         <item quantity="other">%1$s minutes</item>
     </plurals>
+
+    <string name="minutes_short_format">%1$s m</string>
+    <string name="hours_short_format">%1$s h</string>
 </resources>

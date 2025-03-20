@@ -24,7 +24,7 @@ import com.example.yaroslavhorach.pomo.R
 import com.example.yaroslavhorach.pomo.navigation.PomoNavHost
 import com.example.yaroslavhorach.pomo.navigation.TopLevelDestination
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PomoApp(
     appState: NiaAppState = rememberNiaAppState(),

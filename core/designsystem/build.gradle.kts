@@ -1,6 +1,7 @@
 plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
+    id(Plugins.compose)
 }
 
 apply {
@@ -25,7 +26,7 @@ dependencies {
     api(Libs.composeMaterial)
     api(Libs.composePreview)
     api(Libs.navigationCompose)
-    api(Libs.hiltHavigationCompose)
+    api(Libs.hiltNavigationCompose)
     api(Libs.lifecycleCompose)
     api(Libs.lifecycle)
 }

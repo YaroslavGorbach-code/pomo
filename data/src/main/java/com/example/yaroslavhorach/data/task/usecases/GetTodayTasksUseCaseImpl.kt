@@ -1,6 +1,6 @@
 package com.example.yaroslavhorach.data.task.usecases
 
-import com.example.yaroslavhorach.data.task.repository.TaskRepository
+import com.example.yaroslavhorach.domain.task.TaskRepository
 import com.example.yaroslavhorach.domain.task.models.Task
 import com.example.yaroslavhorach.domain.task.usecases.GetTodayTasksUseCase
 import kotlinx.coroutines.flow.Flow

@@ -9,5 +9,5 @@ java {
 }
 
 dependencies {
-    implementation(Libs.corutines)
+    implementation(Libs.coroutines)
 }

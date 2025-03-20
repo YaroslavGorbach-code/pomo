@@ -1,5 +1,3 @@
-
-
 package com.example.yaroslavhorach.database.dao
 
 import androidx.room.Dao

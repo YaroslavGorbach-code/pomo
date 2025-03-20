@@ -1,9 +1,11 @@
-package com.example.yaroslavhorach.designsystem.theme.components
+package com.example.yaroslavhorach.designsystem.theme.components.input_fields
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -13,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.example.yaroslavhorach.common.utill.ValidationState
 import com.example.yaroslavhorach.designsystem.theme.PomoTypography
 import com.example.yaroslavhorach.designsystem.theme.typoPrimary
 import com.example.yaroslavhorach.designsystem.theme.typoSecondary
@@ -21,24 +24,32 @@ import com.example.yaroslavhorach.designsystem.theme.typoSecondary
 @Composable
 fun PomoInputField(
     modifier: Modifier,
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     title: String,
-    hint: String
+    hint: String,
+    maxLength: Int = Int.MAX_VALUE,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
 ) {
+    val isError = state.validation.value.state is ValidationState.Error
     Column(modifier) {
         Text(
             text = title,
-            style = PomoTypography.body2,
+            style = PomoTypography.subtitle3,
             color = MaterialTheme.colorScheme.typoPrimary()
         )
+        Spacer(Modifier.size(8.dp))
         TextField(modifier = Modifier
             .height(55.dp)
-            .padding(top = 4.dp)
             .fillMaxWidth(),
-            value = value,
-            onValueChange = onValueChange,
+            value = state.text,
+            onValueChange = { text ->
+                if (text.length <= maxLength) {
+                    state.text = text
+                    state.validation.value = state.validation.value.copy(state = ValidationState.Idle)
+                }
+            },
             shape = RoundedCornerShape(6.dp),
+            isError = isError,
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.onBackground,
                 focusedIndicatorColor = MaterialTheme.colorScheme.onBackground,
@@ -51,10 +62,22 @@ fun PomoInputField(
                     style = PomoTypography.body2,
                     color = MaterialTheme.colorScheme.typoSecondary()
                 )
-            }
+            },
+            keyboardOptions = keyboardOptions
         )
     }
 }
+
+//@Composable
+//fun ErrorText(textState: TextState) {
+//    if (textState.validation.state is ValidationState.Error) {
+//        Text(
+//            style = PomoTypography.body5,
+//            color = Colo.colors.basicBgAlert,
+//            text = (textState.validation.state as ValidationState.Error).uiText.asString()
+//        )
+//    }
+//}
 
 @Composable
 fun PomoPicker(

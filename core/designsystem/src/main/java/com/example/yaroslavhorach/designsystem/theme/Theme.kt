@@ -39,6 +39,8 @@ fun ColorScheme.secondaryIcon() = if (isSystemInDarkTheme()) AmericanSilver else
 fun ColorScheme.primaryIcon() = if (isSystemInDarkTheme()) DarkSilver else DarkSilver
 @Composable
 fun ColorScheme.primaryVariantInactive() = if (isSystemInDarkTheme()) FuzzyWuzzy10 else FuzzyWuzzy10
+@Composable
+fun ColorScheme.alert() = if (isSystemInDarkTheme()) Alert else Alert
 
 /**
  * Dark default theme color scheme

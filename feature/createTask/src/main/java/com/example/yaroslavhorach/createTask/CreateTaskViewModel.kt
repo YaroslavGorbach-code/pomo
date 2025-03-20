@@ -1,81 +1,81 @@
 package com.example.yaroslavhorach.createTask
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.viewModelScope
 import com.example.yaroslavhorach.common.base.BaseViewModel
 import com.example.yaroslavhorach.common.utill.combine
 import com.example.yaroslavhorach.createTask.model.CreateTaskAction
 import com.example.yaroslavhorach.createTask.model.CreateTaskUiMessage
 import com.example.yaroslavhorach.createTask.model.CreateTaskViewState
-import com.example.yaroslavhorach.createTask.model.CreateTaskViewState.Companion.MIN_BREAK_TIME_MINUTES
-import com.example.yaroslavhorach.createTask.model.CreateTaskViewState.Companion.MIN_TASK_DURATION_MINUTES
-import com.example.yaroslavhorach.createTask.model.CreateTaskViewState.Companion.MIN_WORKING_SESSIONS
+import com.example.yaroslavhorach.createTask.model.CreateTaskViewState.Companion.MIN_TASK_POMODOUS
+import com.example.yaroslavhorach.domain.tag.models.Tag
+import com.example.yaroslavhorach.domain.tag.usecases.CreateTagUseCase
+import com.example.yaroslavhorach.domain.tag.usecases.DeleteTagUseCase
+import com.example.yaroslavhorach.domain.tag.usecases.GetAllTagsUseCase
+import com.example.yaroslavhorach.domain.task.models.Task
+import com.example.yaroslavhorach.domain.task.usecases.CreateTaskUseCase
 import com.example.yaroslavhorach.domain.task.usecases.GetTaskAvailableColorsUseCase
-import com.example.yaroslavhorach.domain.task.usecases.GetTaskAvailableIconsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
 class CreateTaskViewModel @Inject constructor(
-    val getTaskAvailableColorsUseCase: GetTaskAvailableColorsUseCase,
-    val getTaskAvailableIconsUseCase: GetTaskAvailableIconsUseCase
+    getTaskAvailableColorsUseCase: GetTaskAvailableColorsUseCase,
+    val getAllTagsUseCase: GetAllTagsUseCase,
+    val createTaskUseCase: CreateTaskUseCase,
+    val crateTagUseCase: CreateTagUseCase,
+    val deleteTagUseCase: DeleteTagUseCase
 ) : BaseViewModel<CreateTaskViewState, CreateTaskAction, CreateTaskUiMessage>() {
 
     override val pendingActions: MutableSharedFlow<CreateTaskAction> = MutableSharedFlow()
 
-    private val taskDurationSliderValue = MutableStateFlow(MIN_TASK_DURATION_MINUTES)
+    private val estimatedTaskPomodousSliderValue = MutableStateFlow(MIN_TASK_POMODOUS)
 
-    private val taskBreakTimeSliderValue = MutableStateFlow(MIN_BREAK_TIME_MINUTES)
+    private val bottomShitContent: MutableStateFlow<CreateTaskViewState.BottomShit?> = MutableStateFlow(null)
 
-    private val taskWorkingSessionSliderValue = MutableStateFlow(MIN_WORKING_SESSIONS)
+    private val taskColor = MutableStateFlow(getTaskAvailableColorsUseCase().firstOrNull()?.let(::Color))
 
-    private val bottomShitContent: MutableStateFlow<CreateTaskViewState.BottomShit?> =
-        MutableStateFlow(null)
+    private val selectedTags: MutableStateFlow<Set<Tag>> = MutableStateFlow(emptySet())
 
-    private val taskColor = MutableStateFlow(CreateTaskViewState.DEFAULT_TASK_COLOR)
+    private val taskDate: MutableStateFlow<Long> = MutableStateFlow(System.currentTimeMillis())
 
-    private val taskIcon: MutableStateFlow<Int?> = MutableStateFlow(null)
-
-    private val taskDate: MutableStateFlow<Long?> = MutableStateFlow(null)
+    private val taskPriority: MutableStateFlow<Task.Priority> = MutableStateFlow(Task.Priority.LOW)
 
     private val regularTaskDateRange: MutableStateFlow<LongRange?> = MutableStateFlow(null)
 
-    private val taskTime: MutableStateFlow<String?> = MutableStateFlow(null)
-
-    private val taskTitle: MutableStateFlow<String?> = MutableStateFlow(null)
-
     override val state: StateFlow<CreateTaskViewState> = combine(
-        taskDurationSliderValue,
-        taskBreakTimeSliderValue,
-        taskWorkingSessionSliderValue,
+        estimatedTaskPomodousSliderValue,
         bottomShitContent,
         taskColor,
-        taskIcon,
         taskDate,
-        taskTime,
         regularTaskDateRange,
-        taskTitle,
+        flowOf(getTaskAvailableColorsUseCase()),
+        getAllTagsUseCase(),
+        selectedTags,
+        taskPriority,
         uiMessageManager.message
-    ) { durationSliderValue, breakTimeSliderValue, workingSessionSliderValue, bottomShit, color, icon, taskDate, taskTime, taskRange, taskTitle, messages ->
+    ) { estimatedTaskPomodousSliderValue, bottomShit, taskColor, taskDate, taskRange, colors, availableTags, selectedTags, taskPriority, messages ->
         CreateTaskViewState(
             uiMessage = messages,
-            newTaskDurationSliderValue = durationSliderValue,
-            newTaskBreakTimeValue = breakTimeSliderValue,
-            newTaskWorkingSessionsValue = workingSessionSliderValue,
-            newTaskColor = color,
-            newTaskIconRes = icon,
-            newTaskDate = taskDate,
-            newTaskTime = taskTime,
-            newRegularTaskDateRange = taskRange,
+            taskPomodorosSliderValue = estimatedTaskPomodousSliderValue,
+            selectedColor = taskColor,
+            selectedDate = taskDate,
+            colorPickerColors = colors.map(::Color),
+            availableTags = availableTags,
+            selectedTags = selectedTags,
+            regularTaskDateRange = taskRange,
             bottomShitContent = bottomShit,
-            newTaskTitle = taskTitle
+            selectedPriority = taskPriority
         )
     }.stateIn(
         scope = viewModelScope,
@@ -86,80 +86,81 @@ class CreateTaskViewModel @Inject constructor(
     init {
         pendingActions.onEach { action ->
             when (action) {
-                is CreateTaskAction.ColorPickerClick -> {
-                    val colors = getTaskAvailableColorsUseCase()
-                    bottomShitContent.value = CreateTaskViewState.BottomShit.ColorPicker(colors)
-                    submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                is CreateTaskAction.DatePickerClicked -> {
+                    submitMessage(CreateTaskUiMessage.ShowDatePicker(state.value.selectedDate))
                 }
-
-                is CreateTaskAction.DataPickerClick -> {
-                    submitMessage(CreateTaskUiMessage.ShowDatePicker(state.value.newTaskDate))
+                is CreateTaskAction.TaskDurationSliderValueChanged -> {
+                    estimatedTaskPomodousSliderValue.value = action.value
                 }
-
-                is CreateTaskAction.IconPickerClick -> {
-                    val icons = getTaskAvailableIconsUseCase()
-                    bottomShitContent.value = CreateTaskViewState.BottomShit.IconPicker(icons)
-                    submitMessage(CreateTaskUiMessage.ShowBottomShit)
-                }
-
-                is CreateTaskAction.TaskDurationSliderValueChange -> {
-                    taskDurationSliderValue.value = action.value
-                }
-
-                is CreateTaskAction.TaskBreakTimeSliderValueChange -> {
-                    taskBreakTimeSliderValue.value = action.value
-                }
-
-                is CreateTaskAction.TaskWorkingSessionSliderValueChange -> {
-                    taskWorkingSessionSliderValue.value = action.value
-                }
-
-                is CreateTaskAction.TimePickerClick -> {
-                    submitMessage(CreateTaskUiMessage.ShowTimePicker)
-                }
-
-                is CreateTaskAction.TypeTitle -> {
-                    taskTitle.value = action.text
-                }
-
-                is CreateTaskAction.CreateRegularTaskClick -> {
+                is CreateTaskAction.CreateRegularTaskClicked -> {
                     bottomShitContent.value = CreateTaskViewState.BottomShit.RegularTask
                     submitMessage(CreateTaskUiMessage.ShowBottomShit)
                 }
-
-                is CreateTaskAction.CreateTaskClick -> {
-
+                is CreateTaskAction.CreateTaskClicked -> {
+                    state.value.taskTitle.validate()
+//                    createTaskUseCase(state.value.newTaskDate)
                 }
-
-                is CreateTaskAction.ChoseColor -> {
-                    taskColor.value = Color(action.color)
-                    submitMessage(CreateTaskUiMessage.HideBottomShit)
+                is CreateTaskAction.TaskColorChosen -> {
+                    taskColor.value = action.color
                 }
-
-                is CreateTaskAction.ChoseIcon -> {
-                    taskIcon.value = action.iconRes
-                    submitMessage(CreateTaskUiMessage.HideBottomShit)
-                }
-
-                is CreateTaskAction.SelectDate -> {
+                is CreateTaskAction.DateSelected -> {
                     taskDate.value = action.date
                 }
-
-                is CreateTaskAction.SelectTime -> {
-                    taskTime.value = action.time
+                is CreateTaskAction.AddTagClicked -> {
+                    if (state.value.availableTags.isEmpty()) {
+                        bottomShitContent.value = CreateTaskViewState.BottomShit.CreateTag
+                        submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                    } else {
+                        bottomShitContent.value = CreateTaskViewState.BottomShit.SelectTag
+                        submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                    }
                 }
-
-                is CreateTaskAction.PeriodPickerClick -> {
+                is CreateTaskAction.PeriodPickerClicked -> {
                     submitMessage(
                         CreateTaskUiMessage.ShowRangePicker(
-                            state.value.newRegularTaskDateRange?.start,
-                            state.value.newRegularTaskDateRange?.endInclusive
+                            state.value.regularTaskDateRange?.start,
+                            state.value.regularTaskDateRange?.endInclusive
                         )
                     )
                 }
-
-                is CreateTaskAction.SelectDateRange -> {
+                is CreateTaskAction.DtaRangeSelected -> {
                     regularTaskDateRange.value = action.startDate..action.endDate
+                }
+                is CreateTaskAction.CreateTagClicked -> {
+                    bottomShitContent.value = CreateTaskViewState.BottomShit.CreateTag
+                    submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                }
+                is CreateTaskAction.TagSelected -> {
+                    selectedTags.update { tags ->
+                        tags.toMutableSet().apply {
+                            if (add(action.tag).not()) remove(action.tag)
+                        }
+                    }
+                }
+                is CreateTaskAction.SelectTagPrimaryBtnClicked,
+                is CreateTaskAction.SelectTagSecondaryBtnClicked -> {
+                    submitMessage(CreateTaskUiMessage.HideBottomShit)
+                }
+                is CreateTaskAction.PrioritySelected -> {
+                    taskPriority.value = action.priority
+                }
+                is CreateTaskAction.CreatePrimaryBtnClicked -> {
+                    crateTagUseCase(Tag(name = action.tagName, color = action.color.toArgb()))
+
+                    bottomShitContent.value = CreateTaskViewState.BottomShit.SelectTag
+                    submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                }
+                is CreateTaskAction.CreateTagSecondaryBtnClicked -> {
+                    bottomShitContent.value = CreateTaskViewState.BottomShit.SelectTag
+                    submitMessage(CreateTaskUiMessage.ShowBottomShit)
+                }
+                is CreateTaskAction.DeleteTag -> {
+                    selectedTags.update { tags ->
+                        tags.toMutableSet().apply {
+                            remove(find { it.id == action.id })
+                        }
+                    }
+                    deleteTagUseCase(action.id)
                 }
             }
         }.launchIn(viewModelScope)

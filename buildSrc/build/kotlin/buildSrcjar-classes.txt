@@ -1,1 +1,0 @@
-D:\Projects\pomo2\buildSrc\build\classes\kotlin\main\AppConfig.class;D:\Projects\pomo2\buildSrc\build\classes\kotlin\main\Libs.class;D:\Projects\pomo2\buildSrc\build\classes\kotlin\main\Modules.class;D:\Projects\pomo2\buildSrc\build\classes\kotlin\main\Plugins.class;D:\Projects\pomo2\buildSrc\build\classes\kotlin\main\Versions.class

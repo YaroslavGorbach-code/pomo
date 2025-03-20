@@ -1,7 +1,8 @@
 plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.androidApplication)
-    kotlin(Plugins.kapt)
+    id(Plugins.compose)
+    id(Plugins.ksp)
     id(Plugins.hilt)
 }
 
@@ -40,9 +41,9 @@ dependencies {
 
     implementation(Libs.activityCompose)
     implementation(Libs.systemUiController)
-    implementation(Libs.splechScreen)
+    implementation(Libs.splashScreen)
 
     implementation(Libs.hilt)
-    implementation(Libs.hiltHavigationCompose)
-    kapt(Libs.hiltCompiler)
+    implementation(Libs.hiltNavigationCompose)
+    ksp(Libs.hiltCompiler)
 }

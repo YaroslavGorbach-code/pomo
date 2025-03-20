@@ -1,4 +1,4 @@
-package com.example.yaroslavhorach.data.task.repository
+package com.example.yaroslavhorach.domain.task
 
 import com.example.yaroslavhorach.domain.task.models.Task
 import kotlinx.coroutines.flow.Flow

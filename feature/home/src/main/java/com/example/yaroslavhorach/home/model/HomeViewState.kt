@@ -1,7 +1,7 @@
 package com.example.yaroslavhorach.home.model
 
 import com.example.yaroslavhorach.common.utill.UiMessage
-import com.example.yaroslavhorach.designsystem.theme.TaskBackgrounds
+import com.example.yaroslavhorach.designsystem.theme.TaskAndTagsBackgrounds
 import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
 import com.example.yaroslavhorach.domain.task.models.Task
 import com.example.yaroslavhorach.home.R
@@ -45,8 +45,9 @@ data class HomeViewState(
                     600000,
                     false,
                     Date(),
-                    TaskBackgrounds.first().value.toLong(),
-                    PomoIcons.TaskCategoriesIcons.first()
+                    TaskAndTagsBackgrounds.first().value.toLong(),
+                    PomoIcons.TaskCategoriesIcons.first(),
+                    Task.Priority.HIGH
                 )
             )
         )

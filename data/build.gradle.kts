@@ -1,7 +1,8 @@
 plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
-    kotlin(Plugins.kapt)
+    id(Plugins.ksp)
+    id(Plugins.hilt)
 }
 
 apply {
@@ -14,9 +15,9 @@ android{
 
 dependencies {
     api(project(Modules.coreDesignSystem))
-    implementation(project(Modules.dataDatabase))
-    implementation(project(Modules.dataDatastore))
-    implementation(Libs.corutines)
+    api(project(Modules.dataDatabase))
+    api(project(Modules.dataDatastore))
+    implementation(Libs.coroutines)
     implementation(Libs.hilt)
-    kapt(Libs.hiltCompiler)
+    ksp(Libs.hiltCompiler)
 }

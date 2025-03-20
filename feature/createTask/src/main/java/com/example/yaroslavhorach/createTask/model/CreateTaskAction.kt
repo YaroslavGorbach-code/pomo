@@ -1,20 +1,25 @@
 package com.example.yaroslavhorach.createTask.model
 
+import androidx.compose.ui.graphics.Color
+import com.example.yaroslavhorach.domain.tag.models.Tag
+import com.example.yaroslavhorach.domain.task.models.Task
+
 sealed class CreateTaskAction {
-    class TypeTitle(val text: String) : CreateTaskAction()
-    object DataPickerClick : CreateTaskAction()
-    object TimePickerClick : CreateTaskAction()
-    object ColorPickerClick : CreateTaskAction()
-    object IconPickerClick : CreateTaskAction()
-    object PeriodPickerClick : CreateTaskAction()
-    class TaskDurationSliderValueChange(val value: Float) : CreateTaskAction()
-    class TaskWorkingSessionSliderValueChange(val value: Float) : CreateTaskAction()
-    class TaskBreakTimeSliderValueChange(val value: Float) : CreateTaskAction()
-    object CreateTaskClick : CreateTaskAction()
-    object CreateRegularTaskClick : CreateTaskAction()
-    class ChoseColor(val color: Int): CreateTaskAction()
-    class ChoseIcon(val iconRes: Int): CreateTaskAction()
-    class SelectDate(val date: Long): CreateTaskAction()
-    class SelectTime(val time: String): CreateTaskAction()
-    class SelectDateRange(val startDate: Long, val endDate: Long): CreateTaskAction()
+    data object DatePickerClicked : CreateTaskAction()
+    data object PeriodPickerClicked : CreateTaskAction()
+    class TaskDurationSliderValueChanged(val value: Float) : CreateTaskAction()
+    data object CreateTaskClicked : CreateTaskAction()
+    data object CreateTagClicked : CreateTaskAction()
+    data object AddTagClicked : CreateTaskAction()
+    class TagSelected(val tag: Tag) : CreateTaskAction()
+    data object SelectTagPrimaryBtnClicked: CreateTaskAction()
+    data object SelectTagSecondaryBtnClicked: CreateTaskAction()
+    data object CreateTagSecondaryBtnClicked: CreateTaskAction()
+    class DeleteTag(val id: Long): CreateTaskAction()
+    class CreatePrimaryBtnClicked(val tagName: String, val color: Color): CreateTaskAction()
+    data object CreateRegularTaskClicked : CreateTaskAction()
+    class TaskColorChosen(val color: Color) : CreateTaskAction()
+    class DateSelected(val date: Long) : CreateTaskAction()
+    class PrioritySelected(val priority: Task.Priority) : CreateTaskAction()
+    class DtaRangeSelected(val startDate: Long, val endDate: Long) : CreateTaskAction()
 }

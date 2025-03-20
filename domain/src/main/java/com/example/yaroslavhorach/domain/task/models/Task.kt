@@ -9,5 +9,10 @@ data class Task(
     val isFinish: Boolean,
     val date: Date,
     val color: Long,
-    val iconId: Int
-)
+    val iconId: Int,
+    val priority: Priority
+) {
+    enum class Priority {
+        LOW, MEDIUM, HIGH
+    }
+}

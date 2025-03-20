@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.yaroslavhorach.common.utill.TimeFormat
 import com.example.yaroslavhorach.common.utill.timeToToHoursMinutes
 import com.example.yaroslavhorach.designsystem.theme.PomoTheme
 import com.example.yaroslavhorach.designsystem.theme.PomoTypography
@@ -155,7 +156,7 @@ private fun Task(task: Task, onClick: () -> Unit) {
                 color = MaterialTheme.colorScheme.typoPrimary()
             )
             Text(
-                text = task.duration.timeToToHoursMinutes(LocalContext.current),
+                text = task.duration.timeToToHoursMinutes(LocalContext.current, TimeFormat.SHORT),
                 style = PomoTypography.body4,
                 color = MaterialTheme.colorScheme.typoSecondary()
             )

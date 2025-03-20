@@ -2,9 +2,13 @@ package com.example.yaroslavhorach.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
+val White = Color(0xFFFFFFFF)
+val Alert = Color(0xFFFF131A)
+val ElectricGreen = Color(0xFF4CAF50)
+val AmazonOrange = Color(0xFFFF9900)
+
 internal val Cultured = Color(0xFFF5F5F5)
 internal val BrightGray = Color(0xFFEDEDED)
-internal val White = Color(0xFFFFFFFF)
 internal val Crayola = Color(0xFFFF4E53)
 internal val Crayola15 = Color(0x26FF4E53)
 internal val FuzzyWuzzy = Color(0xFFDA6266)
@@ -16,7 +20,7 @@ internal val AmericanSilver = Color(0xFFCFCFCF)
 internal val FuzzyWuzzy10 = Color(0x1ADA6266)
 internal val Calamansi = Color(0xFFFFF4F5)
 
-val TaskBackgrounds = listOf(
+val TaskAndTagsBackgrounds = listOf(
     Color(0xFFFF4848),
     Color(0xFFFF0ED8),
     Color(0xFFA70000),

@@ -66,6 +66,13 @@ object PomoIcons {
     val PlayTask = R.drawable.ic_play
     val NoTask = R.drawable.ic_no_tasks
     val ArrowLeft = R.drawable.ic_arrow_left
+    val Check = R.drawable.ic_check
+    val Today = R.drawable.ic_today
+    val Tomorrow = R.drawable.ic_tomorrow
+    val Plus = R.drawable.ic_plus
+    val Tag = R.drawable.ic_tag
+    val Close16 = R.drawable.ic_close_16
+    val Flag = R.drawable.ic_flag
 
     val TaskCategoriesIcons: List<Int> = listOf(
         AppleWho,

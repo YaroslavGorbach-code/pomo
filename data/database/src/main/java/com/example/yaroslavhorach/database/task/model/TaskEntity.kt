@@ -14,8 +14,13 @@ data class TaskEntity(
     val isFinish: Boolean,
     val date: Long,
     val color: Long,
-    val iconId: Int
-)
+    val iconId: Int,
+    val priority: Priority
+) {
+    enum class Priority {
+        LOW, MEDIUM, HIGH
+    }
+}
 
 fun TaskEntity.asDomainModel() = Task(
     id = id,
@@ -24,7 +29,8 @@ fun TaskEntity.asDomainModel() = Task(
     isFinish = isFinish,
     date = Date(date),
     color = color,
-    iconId = iconId
+    iconId = iconId,
+    priority = Task.Priority.valueOf(priority.name)
 )
 
 fun Task.asEntityModel() = TaskEntity(
@@ -34,5 +40,6 @@ fun Task.asEntityModel() = TaskEntity(
     isFinish = isFinish,
     date = date.time,
     color = color,
-    iconId = iconId
+    iconId = iconId,
+    priority = TaskEntity.Priority.valueOf(priority.name)
 )

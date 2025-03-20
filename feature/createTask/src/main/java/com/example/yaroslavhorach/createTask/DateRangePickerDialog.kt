@@ -42,7 +42,7 @@ internal fun DateRangePickerDialog(
         ),
         selection = CalendarSelection.Period(selectedRange = selectedRange) { startDate, endDate ->
             actioner(
-                CreateTaskAction.SelectDateRange(
+                CreateTaskAction.DtaRangeSelected(
                     startDate.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli(),
                     endDate.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()
                 )

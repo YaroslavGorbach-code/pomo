@@ -30,7 +30,7 @@ abstract class BaseViewModel<STATE, ACTION, MESSAGE> : ViewModel() {
         }
     }
 
-    fun submitMessage(message: MESSAGE){
+    fun submitMessage(message: MESSAGE) {
         viewModelScope.launch {
             uiMessageManager.emitMessage(UiMessage(message))
         }

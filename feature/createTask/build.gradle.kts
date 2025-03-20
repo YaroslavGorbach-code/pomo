@@ -1,8 +1,9 @@
 plugins {
-    kotlin(Plugins.kapt)
+    id(Plugins.ksp)
     id(Plugins.hilt)
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
+    id(Plugins.compose)
 }
 
 apply {
@@ -16,8 +17,8 @@ android {
 dependencies {
     implementation(project(Modules.coreDesignSystem))
     implementation(Libs.hilt)
-    implementation(Libs.hiltHavigationCompose)
+    implementation(Libs.hiltNavigationCompose)
     implementation(Libs.composeDialogsCalendar)
     implementation(Libs.composeDialogsCore)
-    kapt(Libs.hiltCompiler)
+    ksp(Libs.hiltCompiler)
 }

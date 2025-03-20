@@ -20,7 +20,7 @@ import com.example.yaroslavhorach.common.utill.toReadableDate
 import com.example.yaroslavhorach.createTask.model.CreateTaskAction
 import com.example.yaroslavhorach.createTask.model.CreateTaskViewState
 import com.example.yaroslavhorach.designsystem.theme.PomoTypography.h4
-import com.example.yaroslavhorach.designsystem.theme.components.PomoPicker
+import com.example.yaroslavhorach.designsystem.theme.components.input_fields.PomoPicker
 import com.example.yaroslavhorach.designsystem.theme.divider
 import com.example.yaroslavhorach.designsystem.theme.graphics.PomoIcons
 import com.example.yaroslavhorach.designsystem.theme.primaryIcon
@@ -57,8 +57,8 @@ internal fun CreateRegularTaskContent(
                 .padding(top = 18.dp),
             title = stringResource(id = R.string.create_regular_task_dialog_period_field_title_text),
             hint = stringResource(id = R.string.create_regular_task_dialog_period_field_hind_text),
-            value = state.newRegularTaskDateRange?.start?.toReadableDate() + "-" + state.newRegularTaskDateRange?.endInclusive?.toReadableDate(),
-            onClick = { actioner(CreateTaskAction.PeriodPickerClick) },
+            value = state.regularTaskDateRange?.start?.toReadableDate() + "-" + state.regularTaskDateRange?.endInclusive?.toReadableDate(),
+            onClick = { actioner(CreateTaskAction.PeriodPickerClicked) },
             iconRes = PomoIcons.Calendar,
             iconTint = MaterialTheme.colorScheme.primaryIcon()
         )
